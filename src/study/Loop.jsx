@@ -40,6 +40,13 @@ export default function Loop() {
       })
     );
   };
+  const handleDeleteCheckedTodo = () => {
+    console.log("checked delete");
+    const nonChecked = todoList
+      .filter((todo) => todo.checked === false)
+      .map((todo, index) => ({ ...todo, id: index + 1 }));
+    setTodoList(nonChecked);
+  };
 
   return (
     <div
@@ -86,6 +93,19 @@ export default function Loop() {
           onClick={handleAddTodo}
         >
           Add
+        </button>
+        <button
+          style={{
+            height: "32px",
+            border: 0,
+            color: "#fff",
+            background: "linear-gradient(-45deg, #00d2ff, #928dab)",
+            borderRadius: "5px",
+            cursor: "pointer",
+          }}
+          onClick={handleDeleteCheckedTodo}
+        >
+          Delete
         </button>
       </div>
       <ul
